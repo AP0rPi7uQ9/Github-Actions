@@ -34,14 +34,18 @@ jobs:
     # if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@master
 
+      - name: Initialization environment
+
+        run: |
+          sudo mkdir -p /workdir
+          sudo chown $USER:$GROUPS /workdir
 
 
       - name: Load custom configuration
         run: |
-          sudo mkdir -p /workdir
-          sudo chown $USER:$GROUPS /workdir
-          df -hT $PWD
           git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           [ -e files ] && mv files openwrt/files
