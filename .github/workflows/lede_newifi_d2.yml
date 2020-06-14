@@ -6,19 +6,19 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt LEDE NEWIFI D2
+name: Build LEDE Newifi D2
 
 on:
-  #repository_dispatch:
-  #  release:
-  #    types: published
+  repository_dispatch:
+  release:
+    types: published
   push:
     branches:
       - master
-  #    paths:
-  #      - '.config'
-  schedule:
-    - cron: 0 8 */5 * *
+    paths:
+      - 'lede/newifi_d2/.config'
+#  schedule:
+#    - cron: 0 8 * * 5
 #  watch:
 #    types: started
 
@@ -26,9 +26,9 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
-  DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
+  CONFIG_FILE: lede/newifi_d2/.config
+  DIY_P1_SH: lede/diy-part1.sh
+  DIY_P2_SH: lede/diy-part2.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
