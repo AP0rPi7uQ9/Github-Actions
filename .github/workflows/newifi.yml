@@ -9,7 +9,7 @@
 name: Build OpenWrt LEDE NEWIFI D2
 
 on:
-  repository_dispatch:
+  #repository_dispatch:
   #  release:
   #    types: published
   push:
