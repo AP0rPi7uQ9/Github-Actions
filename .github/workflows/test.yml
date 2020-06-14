@@ -42,7 +42,7 @@ jobs:
       - name: Make config
         run: |
         cd lede && make menuconfig
-        mv $GITHUB_WORKSPACE/$CONFIG_FILE lede/.config
+        mv $CONFIG_FILE lede/.config
 
       - name: Download package
         run: |
