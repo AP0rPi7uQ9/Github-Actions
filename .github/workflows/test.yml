@@ -15,9 +15,9 @@ on:
 
 
 env:
+  CONFIG_FILE: .config
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: .config
   DIY_SH: diy.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: false
@@ -43,3 +43,17 @@ jobs:
 
       - name: Install feeds
         run: cd lede && ./scripts/feeds install -a
+
+      - name: Make Config
+        run: [ -e $CONFIG_FILE ] && mv $CONFIG_FILE lede/.config
+
+      - name: Download package
+        run: |
+          cd lede
+          make download -j8
+          find dl -size -1024c -exec ls -l {} \;
+          find dl -size -1024c -exec rm -f {} \;
+
+      - name: Compile
+        run: make -j1 V=s
+
