@@ -9,10 +9,9 @@
 name: Build OpenWrt
 
 on:
-  on:
-    push:
-      branches:
-        - master
+  push:
+    branches:
+      - master
   # repository_dispatch:
   #  release:
   #    types: published
