@@ -51,7 +51,7 @@ jobs:
       - name: Make Config
         run: |
         cd lede && make menuconfig
-        mv $CONFIG_FILE lede/.config
+        mv $GITHUB_WORKSPACE/$CONFIG_FILE lede/.config
 
       - name: Download package
         run: |
