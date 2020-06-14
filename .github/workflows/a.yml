@@ -30,7 +30,12 @@ jobs:
 
     steps:
       - name: apt update
-        run: ls
+        run: ls -l
+
+      - name: cs
+        run: |
+        cd $GITHUB_WORKSPACE
+        ls
 
       - name: move
         run: |
