@@ -6,39 +6,43 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: ls
+name: Build OpenWrt
 
 on:
   push:
     branches:
       - master
 
-
 env:
-  CONFIG_FILE: .config
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  DIY_SH: diy.sh
-  SSH_ACTIONS: true
+  FEEDS_CONF: feeds.conf.default
+  CONFIG_FILE: .config
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
+  UPLOAD_COWTRANSFER: true
+  UPLOAD_WETRANSFER: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
   build:
     runs-on: ubuntu-18.04
+    # if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: apt update
-        run: ls -l
 
-
-
-      - name: move
+      - name: Load custom configuration
         run: |
-        mkdir lede
-        mv $CONFIG_FILE lede/.config
+          [ -e files ] && mv files openwrt/files
+          [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+          chmod +x $DIY_P2_SH
+          cd openwrt
+          $GITHUB_WORKSPACE/$DIY_P2_SH
 
