@@ -35,5 +35,5 @@ jobs:
       - name: move
         run: |
         mkdir lede
-        mv $CONFIG_FILE lede/.config
+        mv $GITHUB_WORKSPACE/$CONFIG_FILE lede/.config
 
