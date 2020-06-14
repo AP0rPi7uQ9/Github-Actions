@@ -35,13 +35,10 @@ jobs:
       - name: apt update
         run: ls -l
 
-      - name: cs
-        run: |
-        cd $GITHUB_WORKSPACE
-        ls
+
 
       - name: move
         run: |
         mkdir lede
-        mv $GITHUB_WORKSPACE/$CONFIG_FILE lede/.config
+        mv $CONFIG_FILE lede/.config
 
