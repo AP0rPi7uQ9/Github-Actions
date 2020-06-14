@@ -32,3 +32,8 @@ jobs:
       - name: apt update
         run: ls
 
+      - name: move
+        run: |
+        mkdir lede
+        mv $CONFIG_FILE lede/.config
+
