@@ -51,5 +51,7 @@ jobs:
       - name: Make Config
         run: |
         echo $GITHUB_WORKSPACE
-
-
+        ls
+        cd $GITHUB_WORKSPACE
+        ls
+        
