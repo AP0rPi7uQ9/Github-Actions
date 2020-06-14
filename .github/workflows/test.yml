@@ -50,16 +50,6 @@ jobs:
 
       - name: Make Config
         run: |
-        cd lede && make menuconfig
-        mv $GITHUB_WORKSPACE/$CONFIG_FILE lede/.config
+        echo $GITHUB_WORKSPACE
 
-      - name: Download package
-        run: |
-          cd lede
-          make download -j8
-          find dl -size -1024c -exec ls -l {} \;
-          find dl -size -1024c -exec rm -f {} \;
-
-      - name: Compile
-        run: make -j1 V=s
 
