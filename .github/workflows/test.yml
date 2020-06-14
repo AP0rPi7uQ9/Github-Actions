@@ -24,10 +24,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: aaaaaBBBB
-        run: |
-          echo $GITHUB_WORKSPACE
-
       - name: Move File
         run: mv $CONFIG_FILE lede/.config
 
@@ -45,10 +41,6 @@ jobs:
 
       - name: Install feeds
         run: cd lede && ./scripts/feeds install -a
-
-      - name: Make config
-        run: |
-        cd lede && make menuconfig
 
 
       - name: Download package
