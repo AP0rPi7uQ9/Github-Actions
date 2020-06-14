@@ -49,7 +49,9 @@ jobs:
         run: cd lede && ./scripts/feeds install -a
 
       - name: Make Config
-        run: mv $CONFIG_FILE lede/.config
+        run: |
+        make menuconfig
+        mv $CONFIG_FILE lede/.config
 
       - name: Download package
         run: |
