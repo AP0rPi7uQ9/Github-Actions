@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build LEDE Phicomm K2
+name: Build LEDE Phicomm K2P
 
 on:
   repository_dispatch:
@@ -16,7 +16,7 @@ on:
     branches:
       - master
     paths:
-      - 'lede/phicomm_k2/.config'
+      - 'lede/phicomm_k2p/.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -26,7 +26,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: lede/phicomm_k2/.config
+  CONFIG_FILE: lede/phicomm_k2p/.config
   DIY_P1_SH: lede/diy-part1.sh
   DIY_P2_SH: lede/diy-part2.sh
   SSH_ACTIONS: true
