@@ -15,8 +15,8 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'openwrt/newifi_d2/.config'
+    #paths:
+    #  - 'openwrt/newifi_d2/.config'
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -70,14 +70,12 @@ jobs:
           chmod +x $DIY_P1_SH
           cd openwrt
           $GITHUB_WORKSPACE/$DIY_P1_SH
-      - name: SSH connection to Actions
-        uses: P3TERX/debugger-action@master
-        if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+
       - name: Update feeds
-        run: cd openwrt && ./scripts/feeds update -a
+        run: cd openwrt/openwrt && ./scripts/feeds update -a
 
       - name: Install feeds
-        run: cd openwrt && ./scripts/feeds install -a
+        run: cd openwrt/openwrt && ./scripts/feeds install -a
 
       - name: Load custom configuration
         run: |
